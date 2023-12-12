@@ -60,6 +60,12 @@ public:
     TxMonOrch(TableConnector appDbConnector, 
               TableConnector confDbConnector, 
               TableConnector stateDbConnector);
+    
+    void startTimer(uint32_t interval);
+    int handlePeriodUpdate(const vector<FieldValueTuple>& data);
+    int handleThresholdUpdate(const string &key, const vector<FieldValueTuple>& data, bool clear);
+    int pollOnePortErrorStatistics(const string &port, TxErrorStatistics &stat);
+    void pollErrorStatistics();
 
 private:
     //ProducerStateTable is designed to provide a IPC ability, 
@@ -82,11 +88,5 @@ private:
 
     void doTask(Consumer& consumer);
     void doTask(SelectableTimer &timer);
-
-    void startTimer(uint32_t interval);
-    int handlePeriodUpdate(const vector<FieldValueTuple>& data);
-    int handleThresholdUpdate(const string &key, const vector<FieldValueTuple>& data, bool clear);
-    int pollOnePortErrorStatistics(const string &port, TxErrorStatistics &stat);
-    void pollErrorStatistics();
 };
 #endif /* SWSS_TXMONORCH_H */

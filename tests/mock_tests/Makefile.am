@@ -54,6 +54,7 @@ tests_SOURCES = aclorch_ut.cpp \
                 intfsorch_ut.cpp \
                 mux_rollback_ut.cpp \
                 warmrestartassist_ut.cpp \
+                txmonorch_ut.cpp \
                 test_failure_handling.cpp \
                 $(top_srcdir)/lib/gearboxutils.cpp \
                 $(top_srcdir)/lib/subintf.cpp \

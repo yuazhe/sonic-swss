@@ -235,6 +235,11 @@ public:
     bool isMACsecPort(sai_object_id_t port_id) const;
     vector<sai_object_id_t> getPortVoQIds(Port& port);
 
+    bool isPortReady()
+    {
+        return m_initDone && m_pendingPortSet.empty();
+    }
+
 private:
     unique_ptr<Table> m_counterTable;
     unique_ptr<Table> m_counterSysPortTable;
